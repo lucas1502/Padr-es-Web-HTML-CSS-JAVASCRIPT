@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 161</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script text="text/javascript">
+        function execRequisicaoAJAX() {
+            const xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = () => {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    //console.log(Math.random());
+                    let result = JSON.parse(xmlhttp.response).data.memes;
+                    result = result.sort(() => {
+                        return (0.5 - Math.random());
+                    });
+                    let htmlToAppend = "";
+                    result.forEach( (item) => {
+                        let tr = "<tr class='table_row'>";
+                        tr += "<td class='table_content'><img width='120px'src='" + item.url + "'title='" + item.name + "'/></td>";
+                        tr += "<td class='table_content'>" + item.name + "</td>";
+                        tr += "<td class='table_content'><a target='_blank' href='" + item.url + "'>" + item.url + "</a></td>";
+                        tr += "<td class='table_content'>" + item.width + "</td>";
+                        tr += "<td class='table_content'>" + item.height + "</td>";
+                        tr += "</tr>";
+
+                        htmlToAppend += tr;
+                    });
+                    tbodyConteudo = document.getElementById("conteudo");
+                    tbodyConteudo.innerHTML = htmlToAppend;
+
+                }
+                
+            };
+            xmlhttp.open("GET", "https://api.imgflip.com/get_memes", true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+
+<body onload="execRequisicaoAJAX()">
+    <div id="secao">
+        <table class="table">
+            <tr>
+                <th class="table_heading">Meme</th>
+                <th class="table_heading">Nome</th>
+                <th class="table_heading">Link</th>
+                <th class="table_heading">Largura</th>
+                <th class="table_heading">Altura</th>
+            </tr>
+            <tbody id="conteudo">
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

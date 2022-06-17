@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Lucas Carvalho Almeida">
+    <title>Tech News!</title>
+
+    <!--Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- CSS do Bootstrap-->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="estilo.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">Tech News</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add-noticia.html">Adicionar notícia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contato.html">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da página-->
+    <header class="py-5 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="fw-bolder" id="articleTitle"></h1>
+                <p class="lead mb-0"></p>
+            </div>
+        </div>
+    </header>
+
+    <!--Page content-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--Blog entries-->
+            <div class="col-lg-8">
+                <!--Nested row for non-featured blog post-->
+                <div class="row d-flex justify-content-center" id="result">
+                    <!--Blog post-->
+
+                </div>
+            </div>
+            <!--Side widgets-->
+            <div class="col-lg-4">
+                <!--Search widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Pesquisar</div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input class="form-control" id="pesquisar" type="text" placeholder="Digite um nome"
+                                aria-label="Digite um nome" aria-describedby="button-search" />
+                            <button class="btn btn-primary" id="button-search" type="button">Pesquisar</button>
+                        </div>
+                    </div>
+                </div>
+                <!--Categories widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Categorias</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="list-unstyled mb-0" id="tags">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">
+                Copyright &copy; Portal -
+                <script>let d = new Date(); document.write(d.getFullYear());</script>
+            </p>
+        </div>
+    </footer>
+
+    <!--Bootstrap core JS-->
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!--Core theme JS-->
+    <script type="text/JavaScript" src="scripts.js"></script>
+    <script>
+        $(function () {
+            let url = new URL(window.location);
+            let params = new URLSearchParams(url.search);
+            let cod = params.get('cod');
+            let objNoticias = JSON.parse(localStorage.getItem("noticias"));
+
+            if (objNoticias === null || objNoticias.length == 0)
+                objNoticias = new Array();
+            var tags = "";
+            for (let noticia of objNoticias) {
+                if (noticia.cod == cod) {
+                    let elPost = "<div class='row'>";
+                    elPost += "<a href='#! '><img class='card-img-top'src='" + noticia.urlimg +"'></a>";
+                    elPost += "<div class='card-body'>";
+                    elPost += "<div class='small text-muted'>" + noticia.date + "</div>";
+                    elPost += "<h2 class='card-title h4'>" + noticia.titulo + "</h2>";
+                    elPost += "<p class='card-text'>" + noticia.conteudo + "</p>";
+                    elPost += "</div></div>";
+                    $("#result").html(elPost);
+                    $("#articleTitle").html(noticia.titulo);
+                }
+            }
+            listTags();
+            $("#pesquisar").keyup(function () {
+                let term = this.value;
+                if (term.length < 3) return;
+                pesquisar(term.toLowerCase());
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+table{
+    margin: 0 auto;
+    background-color: rgb(250, 250, 250);
+    border: 2px solid rgb(89, 89, 89);
+    border-radius: 5px;
+}
+
+.table_heading{
+    border-bottom: 2px solid yellow;
+}

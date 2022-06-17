@@ -1,0 +1,28 @@
+div{
+    width: 300px;
+    height: 80px;
+    
+    float: left;
+    margin-right: 10px;
+    border: 1px solid #9c9c9c;
+    border-radius: 1%;
+}
+
+#bloco1{
+    background-color: #A6B1E1;
+    color: black;
+}
+
+#bloco2{
+    background-color: #DCD6F7;
+    color: blueviolet;
+}
+#bloco2:hover{
+    background-color: blueviolet;
+    color: #DCD6F7;
+}
+
+.bloco3{
+    background-color: #CACFD6;
+    color: red;
+}

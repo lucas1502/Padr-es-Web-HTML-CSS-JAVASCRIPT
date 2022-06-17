@@ -1,0 +1,57 @@
+body{
+    width: 800px;
+    margin: auto;
+    
+}
+
+#header, .corpo, .rodape{
+    border: solid 1px rgba(0, 0, 0, 0.322);
+    width: auto;
+}
+a, .softwares, .avatar, .table-container, div{
+    width: 800px;
+    margin-top: 10px;
+}
+
+#header{
+    height: 100px;
+    background-color: #f0f8ff;
+}
+
+#header:hover{
+    background-color: #71afe6;
+}
+
+.corpo{
+    display: flex;
+    flex-wrap: wrap
+}
+
+#paragrafo3{
+    width: 787px;
+    border: solid 3px rgb(0, 0, 0);
+    padding: 3px;
+}
+
+.softwares{
+    width: 500px;
+}
+
+.avatar{
+    width: 250px;
+}
+.avatar img{
+    border: solid 3px rgba(0, 0, 0, 0.24);
+}
+
+.table-container table{
+    width: 799px;
+    border: solid 3px rgba(0, 0, 0, 0.24);
+}
+
+.audio, .video{
+    width: 398px;
+}
+
+
+

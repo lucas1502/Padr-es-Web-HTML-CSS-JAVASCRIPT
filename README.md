@@ -1,0 +1,1 @@
+Exercícios realizados durante a disciplina de Padrões Web com HTML, CSS e Javascript no curso de pós graduação de Desenvolvimento Web Full Stack pela PUC Minas

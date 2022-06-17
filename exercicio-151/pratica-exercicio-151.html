@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Exercicio 151</title>
+</head>
+
+<body onload="loadFromLocalStorage()">
+    <div id="content">
+        <h1>Inserir pontos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Aluno</th>
+                    <th colspan="3">Pontuação</th>
+                </tr>
+                <tr>
+                    <th>HTML</th>
+                    <th>CSS</th>
+                    <th>JavaScript</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="aluno" id="aluno"></td>
+                    <td><input type="text" name="notahtml" id="notahtml"></td>
+                    <td><input type="text" name="notacss" id="notacss"></td>
+                    <td><input type="text" name="notajs" id="notajs"></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><button onclick="add()">Adicionar</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <h1>Notas</h1>
+        <table id="tableBoletim">
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Total</th>
+                    <th>Média</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody id="resul">
+                
+            </tbody>
+        </table>
+        <button type="button" onclick="saveGridToLocalStorage()">Salvar no Browser</button>
+    </div>
+
+    <script type="text/JavaScript" src="scripts.js"></script>
+</body>
+
+</html>

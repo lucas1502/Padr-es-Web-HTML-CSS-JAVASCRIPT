@@ -1,0 +1,38 @@
+body {
+    background-color: rgb(47, 63, 77);
+}
+
+.container {
+    background-color: #fff;
+    width: 95%;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.coin {
+    width: 95%;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 3%;
+    margin: 10px auto;
+    text-align: center;
+    display: flex;
+}
+
+.coin div {
+    width: 50%;
+}
+
+.coin .img {
+    text-align: right;
+    margin: auto;
+}
+
+.coin .coin-content {
+    text-align: left;
+    margin: auto;
+}
+
+h1 {
+    font-size: 16px;
+    margin: 0;
+}
